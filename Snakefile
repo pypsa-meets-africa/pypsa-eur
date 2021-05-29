@@ -102,7 +102,8 @@ rule base_network:
     benchmark: "benchmarks/base_network"
     threads: 1
     resources: mem=500
-    script: "scripts/base_network.py"
+    notebook: "scripts/base_network.py.ipynb"
+    #script: "scripts/base_network.py"
 
 
 rule build_shapes:
