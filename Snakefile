@@ -102,8 +102,9 @@ rule base_network:
     benchmark: "benchmarks/base_network"
     threads: 1
     resources: mem=500
-    notebook: "scripts/base_network.py.ipynb"
-    #script: "scripts/base_network.py"
+    script: "scripts/base_network.py"
+    #notebook: "scripts/base_network.py.ipynb"
+    
 
 
 rule build_shapes:
@@ -138,6 +139,8 @@ rule build_bus_regions:
     threads: 1
     resources: mem=1000
     script: "scripts/build_bus_regions.py"
+    # notebook: "scripts/build_bus_regions.py.ipynb"
+    
 
 if config['enable'].get('build_cutout', False):
     rule build_cutout:
@@ -237,15 +240,16 @@ rule simplify_network:
         regions_onshore="resources/regions_onshore.geojson",
         regions_offshore="resources/regions_offshore.geojson"
     output:
-        network='networks/elec_s{simpl}.nc',
-        regions_onshore="resources/regions_onshore_elec_s{simpl}.geojson",
-        regions_offshore="resources/regions_offshore_elec_s{simpl}.geojson",
-        busmap='resources/busmap_elec_s{simpl}.csv'
-    log: "logs/simplify_network/elec_s{simpl}.log"
-    benchmark: "benchmarks/simplify_network/elec_s{simpl}"
+        network='networks/elec_s.nc',
+        regions_onshore="resources/regions_onshore_elec_s.geojson",
+        regions_offshore="resources/regions_offshore_elec_s.geojson",
+        busmap='resources/busmap_elec_s.csv'
+    log: "logs/simplify_network/elec_s.log"
+    benchmark: "benchmarks/simplify_network/elec_s"
     threads: 1
     resources: mem=4000
-    script: "scripts/simplify_network.py"
+    notebook: "scripts/simplify_network.py.ipynb"
+    # script: "scripts/simplify_network.py"
 
 
 rule cluster_network:
